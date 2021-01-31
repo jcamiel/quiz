@@ -10,13 +10,14 @@ plugins {
 
 val springBootVersion = "2.4.2"
 val jacksonVersion = "2.12.1"
+val pebbleVersion = "3.1.4"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-thymeleaf:$springBootVersion")
+    implementation("io.pebbletemplates:pebble-spring-boot-starter:$pebbleVersion")
     implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -53,4 +54,14 @@ tasks.dependencyUpdates {
         }
     }
     checkForGradleUpdate = true
+}
+
+tasks {
+    processResources {
+        filesMatching(listOf("application.properties", "banner.txt")) {
+            val tokens = HashMap<String, String>()
+            tokens["version"] = project.version.toString()
+            filter<org.apache.tools.ant.filters.ReplaceTokens>("tokens" to tokens)
+        }
+    }
 }
