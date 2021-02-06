@@ -1,0 +1,122 @@
+[
+  {
+    "id": "c0d80047-4fbe-4d45-a005-91b5c7018b34",
+    "created": "1995-12-17T03:24:00",
+    "question": "What is a pennyroyal?",
+    "stars": 4256,
+    "answers": [
+      {
+        "proposal": "Stamp",
+        "correct": false
+      },
+      {
+        "proposal": "Bicycle",
+        "correct": false
+      },
+      {
+        "proposal": "Butterfly",
+        "correct": false
+      },
+      {
+        "proposal": "Blue flower",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": "1410ce79-5fbe-40eb-9ea0-70512e295352",
+    "created": "2012-01-20T10:42:00",
+    "question": "Tom Clancy novel and movie: \"The Hunt For Red WHAT\"?",
+    "stars": 345,
+    "answers": [
+      {
+        "proposal": "October",
+        "correct": true
+      },
+      {
+        "proposal": "Robin",
+        "correct": false
+      },
+      {
+        "proposal": "Alligator",
+        "correct": false
+      },
+      {
+        "proposal": "Lobster",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "f4d7e2df-0fe3-41fe-9241-eead3168b2aa",
+    "created": "2016-06-12T08:23:00",
+    "question": "What word can mean the R of RIP or a musical pause?",
+    "stars": 1007,
+    "answers": [
+      {
+        "proposal": "Right",
+        "correct": false
+      },
+      {
+        "proposal": "Remain",
+        "correct": false
+      },
+      {
+        "proposal": "Riposte",
+        "correct": false
+      },
+      {
+        "proposal": "Rest",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": "d6f5577f-602b-440a-b2ee-dffe5fd9e1ae",
+    "created": "2018-09-08T20:47:00",
+    "question": "Heath Ledger's final movie is titled WHAT?",
+    "stars": 3678,
+    "answers": [
+      {
+        "proposal": "\"The Dark Knight\"",
+        "correct": false
+      },
+      {
+        "proposal": "\"I'm not There\"",
+        "correct": false
+      },
+      {
+        "proposal": "\"The Imaginarium Of Doctor Parnassus\"",
+        "correct": true
+      },
+      {
+        "proposal": "\"A Knights Tale\"",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": "4edc1fdb-56e9-412a-8e7d-e24e19a61641",
+    "created": "2020-10-20T11:08:00",
+    "question": "Which is a former name of the Turkish capital Ankara?",
+    "stars": 678,
+    "answers": [
+      {
+        "proposal": "Ceylon",
+        "correct": false
+      },
+      {
+        "proposal": "Constantinople",
+        "correct": false
+      },
+      {
+        "proposal": "Abyssinia",
+        "correct": false
+      },
+      {
+        "proposal": "Angora",
+        "correct": true
+      }
+    ]
+  }
+]
