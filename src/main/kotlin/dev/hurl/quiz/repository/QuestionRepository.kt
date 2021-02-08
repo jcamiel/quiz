@@ -1,14 +1,14 @@
-package dev.hurl.quiz
+package dev.hurl.quiz.repository
 
 import dev.hurl.quiz.model.Question
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.springframework.stereotype.Repository
 import org.springframework.util.ResourceUtils
-
+import kotlin.math.min
 
 @Repository
-class QuizRepository {
+class QuestionRepository {
     private val questions: MutableList<Question>
 
     init {
@@ -24,6 +24,8 @@ class QuizRepository {
      * @return sublist of Question
      */
     fun getQuestions(offset: Int, size: Int): List<Question> {
-        return questions.subList(fromIndex = offset, toIndex = offset + size).toList()
+        val fromIndex = min(offset, questions.size - 1)
+        val toIndex = min(offset + size - 1, questions.size - 1)
+        return questions.subList(fromIndex = fromIndex, toIndex = toIndex).toList()
     }
 }

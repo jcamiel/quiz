@@ -1,4 +1,4 @@
-package dev.hurl.quiz
+package dev.hurl.quiz.helper
 
 import org.springframework.web.servlet.ModelAndView
 
