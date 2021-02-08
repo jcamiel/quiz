@@ -6,6 +6,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.36.0"
     kotlin("jvm") version "1.4.30"
     kotlin("plugin.spring") version "1.4.30"
+    kotlin("plugin.serialization") version "1.4.30"
 }
 
 val springBootVersion = "2.4.2"
@@ -23,6 +24,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.springframework.session:spring-session-core:$springBootVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
     testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
 }
 
