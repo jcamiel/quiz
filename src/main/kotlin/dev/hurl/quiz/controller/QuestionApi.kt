@@ -1,6 +1,7 @@
 package dev.hurl.quiz.controller
 
 import dev.hurl.quiz.model.Question
+import dev.hurl.quiz.model.Sort
 import dev.hurl.quiz.repository.QuestionRepository
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -18,7 +19,7 @@ class QuestionApi(
         @RequestParam(required = false, defaultValue = "0") offset: Int,
         @RequestParam(required = false, defaultValue = "10") size: Int
     ): List<Question> {
-        return questionRepository.getQuestions(offset = offset, size = size)
+        return questionRepository.getQuestions(offset = offset, size = size, sort = Sort.NEWEST)
     }
 
 }

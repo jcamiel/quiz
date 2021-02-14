@@ -1,6 +1,7 @@
 package dev.hurl.quiz.repository
 
 import dev.hurl.quiz.model.Question
+import dev.hurl.quiz.model.Sort
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.springframework.stereotype.Repository
@@ -23,7 +24,8 @@ class QuestionRepository {
      * @param size size of the returned sublist
      * @return sublist of Question
      */
-    fun getQuestions(offset: Int, size: Int): List<Question> {
+    fun getQuestions(offset: Int, size: Int, sort: Sort): List<Question> {
+
         val fromIndex = min(offset, questions.size - 1)
         val toIndex = min(offset + size - 1, questions.size - 1)
         return questions.subList(fromIndex = fromIndex, toIndex = toIndex).toList()

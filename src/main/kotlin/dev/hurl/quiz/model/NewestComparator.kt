@@ -1,0 +1,1 @@
+package dev.hurl.quiz.model
