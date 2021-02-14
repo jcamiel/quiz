@@ -13,7 +13,7 @@ import java.util.*
 
 
 class Rfc3339Serializer : KSerializer<Date> {
-    
+
     companion object {
         private val formatter: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX")
     }

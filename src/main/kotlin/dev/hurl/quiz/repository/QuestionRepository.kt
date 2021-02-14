@@ -25,9 +25,11 @@ class QuestionRepository {
      * @return sublist of Question
      */
     fun getQuestions(offset: Int, size: Int, sort: Sort): List<Question> {
-
         val fromIndex = min(offset, questions.size - 1)
-        val toIndex = min(offset + size - 1, questions.size - 1)
-        return questions.subList(fromIndex = fromIndex, toIndex = toIndex).toList()
+        val toIndex = min(offset + size, questions.size)
+        return questions
+            .sortedWith(sort)
+            .subList(fromIndex = fromIndex, toIndex = toIndex)
+            .toList()
     }
 }

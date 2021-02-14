@@ -1,5 +1,6 @@
 package dev.hurl.quiz.controller
 
+import dev.hurl.quiz.model.NewestSort
 import dev.hurl.quiz.model.Question
 import dev.hurl.quiz.model.Sort
 import dev.hurl.quiz.repository.QuestionRepository
@@ -17,9 +18,11 @@ class QuestionApi(
     @GetMapping(value = ["/questions"])
     fun get(
         @RequestParam(required = false, defaultValue = "0") offset: Int,
-        @RequestParam(required = false, defaultValue = "10") size: Int
+        @RequestParam(required = false, defaultValue = "10") size: Int,
+        @RequestParam(required = false) sort: String?,
     ): List<Question> {
-        return questionRepository.getQuestions(offset = offset, size = size, sort = Sort.NEWEST)
+        val sorter = sort?.let { Sort.fromParameter(it) } ?: NewestSort
+        return questionRepository.getQuestions(offset = offset, size = size, sort = sorter)
     }
 
 }
