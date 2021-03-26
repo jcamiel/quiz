@@ -35,4 +35,18 @@ class QuestionRepository(
             .subList(fromIndex = fromIndex, toIndex = toIndex)
             .toList()
     }
+
+
+    /**
+     * Returns the number of questions in the repository
+     */
+    fun getQuestionsCount(): Int = questions.size
+
+    /**
+     * Returns a question at the specified index
+     * @param index index of the question
+     * @return a Question
+     */
+    fun getQuestion(index: Int): Question = questions[index]
+
 }
