@@ -4,24 +4,24 @@
 - Test home page
 
 ```
-GET http://localhost:8000/ 
+GET http://localhost:8080
 HTTP/1.1 200
 ````
 
 HTML asserts:
 
 ```
-GET http://localhost:8000/ 
+GET http://localhost:8080 
 HTTP/1.1 200
 [Asserts]
-xpath "string(/head/title/)" equals "Welcome to Quiz!"
+xpath "string(//head/title)" equals "Welcome to Quiz!"
 ````
 
 
 - Test health api
 
 ```
-GET http://localhost:8000/api/health
+GET http://localhost:8080/api/health
 HTTP/1.1 200
 [Asserts]
 jsonpath "$.status" "OK"
