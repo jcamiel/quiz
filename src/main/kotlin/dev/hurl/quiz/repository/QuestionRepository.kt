@@ -4,17 +4,20 @@ import dev.hurl.quiz.model.Question
 import dev.hurl.quiz.model.Sort
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import org.springframework.core.io.ResourceLoader
 import org.springframework.stereotype.Repository
 import org.springframework.util.ResourceUtils
 import kotlin.math.min
 
 @Repository
-class QuestionRepository {
+class QuestionRepository(
+    private val resourceLoader: ResourceLoader
+) {
     private val questions: MutableList<Question>
 
     init {
-        val file = ResourceUtils.getFile("classpath:quiz.json")
-        val data = file.readText()
+        val file = resourceLoader.getResource("classpath:quiz.json").inputStream
+        val data = file.readAllBytes().decodeToString()
         questions = Json.decodeFromString(data)
     }
 
