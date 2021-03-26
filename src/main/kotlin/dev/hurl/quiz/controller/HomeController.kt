@@ -11,6 +11,7 @@ class HomeController {
     @GetMapping(path = ["/"])
     fun get(): ModelAndView {
         val modelAndView = ModelAndView("home")
+        modelAndView["tile"] = "Welcome to Quiz!"
         modelAndView["name"] = "toto"
         return modelAndView
     }
