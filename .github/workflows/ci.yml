@@ -41,12 +41,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./docker/Dockerfile
-          push: true
-          tags: |
-            jcamiel/quiz:latest
-            ghcr.io/jcamiel/quiz:latest
+        run: |
+          bin/docker-build.sh
+          bin/docker-publish.sh
 
