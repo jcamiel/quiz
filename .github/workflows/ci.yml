@@ -39,4 +39,9 @@ jobs:
         run: |
           bin/docker-build.sh
           bin/docker-publish.sh
+      - name: Integration test
+        run: |
+          curl -LO https://github.com/Orange-OpenSource/hurl/releases/download/1.2.0/hurl_1.2.0_amd64.deb
+          sudo dpkg -i hurl_1.2.0_amd64.deb
+          hurl --version
 
