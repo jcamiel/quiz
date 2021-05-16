@@ -1,5 +1,9 @@
-FROM adoptopenjdk/openjdk11:jdk-11.0.11_9-alpine
+FROM adoptopenjdk/openjdk11:jre-11.0.11_9-alpine
 
-COPY build/libs/quiz-0.0.1-SNAPSHOT.jar quiz.jar
+RUN addgroup -S quiz && adduser -S quiz -G quiz
 
-CMD ["java","-jar", "quiz.jar"]
+USER quiz:quiz
+
+COPY ./build/libs/quiz-0.0.1-SNAPSHOT.jar app/quiz.jar
+
+CMD ["java","-jar", "app/quiz.jar"]
