@@ -1,9 +1,16 @@
 {% extends "base" %}
 
 {% block content %}
-<h1>Home</h1>
-<p> Welcome to my home page. My name is {{ name }}.</p>
+<div>
+    <img class="logo" src="/quiz.svg" alt="Quiz logo">
+</div>
+<h1>Quiz</h1>
+<p> Welcome to Quiz!. My name is {{ name }}.</p>
 
+
+<form action="/quiz">
+    <button type="submit">Play!</button>
+</form>
 
 <form action="/new-quiz" method="POST">
     <button type="submit">Create a new Quiz</button>
@@ -11,5 +18,6 @@
            name="{{ _csrf.parameterName }}"
            value="{{ _csrf.token }}"/>
 </form>
+
 
 {% endblock %}
