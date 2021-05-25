@@ -26,6 +26,10 @@ echo "Starting Quiz instance to be ready"
 
 wait_for_url 'http://localhost:8080' 60
 
+echo "Running Hurl tests"
+
+hurl integration/*.hurl > /dev/null 2>&1
+
 echo "Stopping Quiz instance"
 
 docker stop quiz
