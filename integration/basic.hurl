@@ -16,6 +16,5 @@ jsonpath "$.status" equals "RUNNING"
 
 # Check that we have a 404 response for broken links
 GET http://localhost:8080/not-found
-Accept: text/html
 HTTP/1.1 404
 
