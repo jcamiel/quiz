@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import java.util.*
+import kotlin.random.Random
 
 @RestController
 @RequestMapping("/api")
@@ -13,7 +14,12 @@ class HealthApi {
 
     @GetMapping(value = ["/health"])
     fun get(): Health {
-        return Health(status = Status.RUNNING, reportedDate = Date() )
+        return Health(
+            status = Status.RUNNING,
+            reportedDate = Date(),
+            healthy = true,
+            operationId = Random.nextInt()
+        )
     }
 
 }
