@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import java.util.*
 import kotlin.random.Random
+import kotlin.random.nextUInt
 
 @RestController
 @RequestMapping("/api")
@@ -18,7 +19,7 @@ class HealthApi {
             status = Status.RUNNING,
             reportedDate = Date(),
             healthy = true,
-            operationId = Random.nextInt()
+            operationId = Random.nextUInt()
         )
     }
 

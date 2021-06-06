@@ -16,5 +16,5 @@ data class Health(
     @Serializable(with = Rfc3339Serializer::class)
     val reportedDate: Date,
     val healthy: Boolean,
-    val operationId: Int,
+    val operationId: UInt,
 )
