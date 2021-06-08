@@ -1,0 +1,34 @@
+{% extends "base" %}
+
+{% block content %}
+
+<h1>Create a new Quiz</h1>
+
+<form action="/new-quiz" method="POST">
+
+    <ul>
+    {% for i in range(0,10) %}
+        <li>
+            <label for="question-{{i}}">Question {{ i }}:</label>
+
+            <select name="question-{{i}}" id="question-{{i}}">
+                <option value="">--Please choose an question--</option>
+                {% for question in dto.questions %}
+                <option value="dog">{{question.title}}</option>
+                {% endfor %}
+            </select>
+        </li>
+    {% endfor %}
+    </ul>
+
+
+    <div>
+        <button type="submit">Create</button>
+        <input type="hidden"
+               name="{{ _csrf.parameterName }}"
+               value="{{ _csrf.token }}"/>
+    </div>
+</form>
+
+
+{% endblock %}

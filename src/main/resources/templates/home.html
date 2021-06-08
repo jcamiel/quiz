@@ -1,23 +1,20 @@
 {% extends "base" %}
 
 {% block content %}
-<div>
-    <img class="logo" src="/quiz.svg" alt="Quiz logo">
-</div>
+
 <h1>Quiz</h1>
-<p> Welcome to Quiz!. My name is {{ name }}.</p>
+
+<h2>Welcome to Quiz!</a></h2>
+
+<div>
+    <a href="/quiz"><button>Play!</button></a>
+</div>
+
+<div>
+    <a href="/new-quiz"><button>Create a new Quiz!</button></a>
+</div>
 
 
-<form action="/quiz">
-    <button type="submit">Play!</button>
-</form>
-
-<form action="/new-quiz" method="POST">
-    <button type="submit">Create a new Quiz</button>
-    <input type="hidden"
-           name="{{ _csrf.parameterName }}"
-           value="{{ _csrf.token }}"/>
-</form>
 
 
 {% endblock %}
