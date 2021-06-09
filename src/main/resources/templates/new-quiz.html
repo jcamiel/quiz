@@ -7,14 +7,14 @@
 <form action="/new-quiz" method="POST">
 
     <ul>
-    {% for i in range(0,10) %}
+    {% for i in range(0,9) %}
         <li>
-            <label for="question-{{i}}">Question {{ i }}:</label>
+            <label for="question{{i}}">Question {{ i }}:</label>
 
-            <select name="question-{{i}}" id="question-{{i}}">
+            <select name="question{{i}}" id="question{{i}}">
                 <option value="">--Please choose an question--</option>
-                {% for question in dto.questions %}
-                <option value="dog">{{question.title}}</option>
+                {% for question in dto.allQuestions %}
+                <option value="{{question.id}}">{{question.title}}</option>
                 {% endfor %}
             </select>
         </li>
