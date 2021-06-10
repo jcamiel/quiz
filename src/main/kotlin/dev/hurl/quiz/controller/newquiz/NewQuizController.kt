@@ -25,7 +25,7 @@ class NewQuizController(
     }
 
     @PostMapping(path = ["/new-quiz"])
-    fun post(@ModelAttribute newQuestionFormDto: NewQuestionFormDto): ModelAndView {
+    fun post(@ModelAttribute newQuizFormDto: NewQuizFormDto): ModelAndView {
         return ModelAndView("redirect:/")
     }
 

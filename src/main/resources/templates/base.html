@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }}</title>
     <link rel="stylesheet" href="/style.css">
     <!--<script src="script.js"></script>-->
@@ -10,9 +11,11 @@
 <div>
     <a href="/"><img class="logo_img" src="/quiz.svg" alt="Quiz logo"></a>
 </div>
-{% block content %}{% endblock %}
+<div class="main">
+    {% block content %}{% endblock %}
+</div>
 <footer>
-    <div>a game by <a href="https://hurl.dev"> Hurl team!</div>
+    <div>a game by <a href="https://hurl.dev">Hurl&RightArrowLeftArrow; Team</a></div>
 </footer>
 </body>
 </html>

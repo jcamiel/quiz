@@ -4,22 +4,39 @@
 
 <h1>Create a new Quiz</h1>
 
+<h2>Quiz</h2>
+
 <form action="/new-quiz" method="POST">
 
-    <ul>
-    {% for i in range(0,9) %}
-        <li>
-            <label for="question{{i}}">Question {{ i }}:</label>
+    <section>
+        <div>
+            <label for="username">Author name: <abbr title="required" aria-label="required">*</abbr></label>
+            <input id="username" type="text" name="username" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" type="email" name="email">
+        </div>
+    </section>
 
-            <select name="question{{i}}" id="question{{i}}">
-                <option value="">--Please choose an question--</option>
-                {% for question in dto.allQuestions %}
-                <option value="{{question.id}}">{{question.title}}</option>
+    <section>
+        <fieldset>
+            <legend>Questions</legend>
+            <ol>
+                {% for i in range(0,4) %}
+                <li>
+                    <label for="question{{i}}"><abbr title="required" aria-label="required">*</abbr></label>
+                    <select name="question{{i}}" id="question{{i}}" required>
+                        <option value="">--Please choose an question--</option>
+                        {% for question in dto.allQuestions %}
+                        <option value="{{question.id}}">{{question.title}}</option>
+                        {% endfor %}
+                    </select>
+                </li>
                 {% endfor %}
-            </select>
-        </li>
-    {% endfor %}
-    </ul>
+            </ol>
+        </fieldset>
+    </section>
 
 
     <div>
@@ -28,6 +45,7 @@
                name="{{ _csrf.parameterName }}"
                value="{{ _csrf.token }}"/>
     </div>
+
 </form>
 
 

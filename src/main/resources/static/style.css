@@ -1,3 +1,6 @@
+.main {
+}
+
 .logo_img {
     display: block;
     width: 300px;
@@ -5,20 +8,4 @@
     margin-right: auto;
 }
 
-body {
-   font-family: Verdana, Arial, Helvetica, sans-serif;
-}
-
-h1 {
-    font-weight: 800;
-    font-size: 2.4em;
-    margin: 6rem auto 3rem auto;
-}
-
-h2 {
-    font-weight: 800;
-    font-size: 1.8em;
-    line-height: 1;
-    margin: 4rem auto 2rem auto;
-}
 

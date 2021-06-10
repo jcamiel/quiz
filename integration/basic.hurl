@@ -38,5 +38,5 @@ HTTP/1.1 200
 [Asserts]
 header "Content-Type" equals "application/json"
 jsonpath "$" countEquals 20
-jsonpath "$[0].id" equals "c0d80047-4fbe-4d45-a005-91b5c7018b34"
+jsonpath "$[0].id" equals "c0d80047"
 jsonpath "$[0].title" equals "What is a pennyroyal?"
