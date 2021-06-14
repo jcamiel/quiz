@@ -4,8 +4,6 @@
 
 <h1>Create a new Quiz</h1>
 
-<h2>Quiz</h2>
-
 <form action="/new-quiz" method="POST">
 
     <section>
@@ -27,7 +25,7 @@
                 <li>
                     <label for="question{{i}}"><abbr title="required" aria-label="required">*</abbr></label>
                     <select name="question{{i}}" id="question{{i}}" required>
-                        <option value="">--Please choose an question--</option>
+                        <option value="">--Please choose a question--</option>
                         {% for question in dto.allQuestions %}
                         <option value="{{question.id}}">{{question.title}}</option>
                         {% endfor %}

@@ -4,6 +4,8 @@ import dev.hurl.quiz.helper.addCsrfToken
 import dev.hurl.quiz.helper.set
 import dev.hurl.quiz.model.NewestSort
 import dev.hurl.quiz.service.QuestionService
+import dev.hurl.quiz.service.QuizService
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
@@ -13,25 +15,53 @@ import javax.servlet.http.HttpServletRequest
 
 @Controller
 class NewQuizController(
-    private val questionService: QuestionService
+    private val questionService: QuestionService,
+    private val quizService: QuizService
 ){
+    private val logger = LoggerFactory.getLogger(javaClass)
 
     @GetMapping(path = ["/new-quiz"])
     fun get(request: HttpServletRequest): ModelAndView {
+        return getModelAndView(request)
+    }
+
+    @PostMapping(path = ["/new-quiz"])
+    fun post(request: HttpServletRequest, @ModelAttribute newQuizFormDto: NewQuizFormDto): ModelAndView {
+        val ids = listOf(
+            newQuizFormDto.question0,
+            newQuizFormDto.question1,
+            newQuizFormDto.question2,
+            newQuizFormDto.question3,
+            newQuizFormDto.question4,
+        )
+        val questions = questionService.findQuestionByIds(ids)
+        if (questions.any { it == null}) {
+           logger.warn("Invalid ids $ids")
+           return getModelAndView(request)
+        }
+
+        val quiz = quizService.createQuiz(
+            author = newQuizFormDto.name,
+            email = newQuizFormDto.email,
+            questions = questions.filterNotNull()
+        )
+
+        return ModelAndView("redirect:/")
+    }
+
+    private fun getModelAndView(request: HttpServletRequest): ModelAndView {
         val modelAndView = ModelAndView("new-quiz")
         modelAndView["dto"] = getDto()
         modelAndView.addCsrfToken(request)
         return modelAndView
     }
 
-    @PostMapping(path = ["/new-quiz"])
-    fun post(@ModelAttribute newQuizFormDto: NewQuizFormDto): ModelAndView {
-        return ModelAndView("redirect:/")
-    }
-
     private fun getDto(): NewQuizDto {
         val size = questionService.getQuestionsCount()
         val questions = questionService.getQuestions(offset = 0, size = size, sort = NewestSort)
-        return NewQuizDto(allQuestions = questions.map { it.toQuestionDto() })
+        return NewQuizDto(
+            allQuestions = questions.map { it.toQuestionDto() },
+            questions = listOf()
+        )
     }
 }

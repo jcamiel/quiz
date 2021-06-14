@@ -1,11 +1,60 @@
-.main {
+html {
+    --background-color: white;
+    --body-text: black;
 }
 
-.logo_img {
+@media (prefers-color-scheme: dark) {
+    html {
+        --background-color: black;
+        --body-text: white;
+    }
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.125rem; /* 18 px */
+    line-height: 1.4;
+    background-color: var(--background-color);
+    color: var(--body-text);
+}
+
+.main {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer {
+    display: flex;
+    justify-content: end;
+    color: darkgray;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.footer-body {
+    padding-right: 20px;
+}
+
+.logo-img {
     display: block;
     width: 300px;
     margin-left: auto;
     margin-right: auto;
 }
 
+button {
+    margin: 10px 0 10px 0;
+}
+
+input {
+    margin: 10px 0 10px 0;
+}
+
+select {
+    margin: 10px 0 10px 0;
+}
 

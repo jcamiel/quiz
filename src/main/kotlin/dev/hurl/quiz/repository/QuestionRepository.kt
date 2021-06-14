@@ -49,4 +49,14 @@ class QuestionRepository(
      */
     fun getQuestion(index: Int): Question = questions[index]
 
+    /**
+     * Returns a list question at the specified ids
+     * @param ids list of questions ids to be returned
+     * @return a list of question (a question will be null if the specified id doesn't exist)
+     */
+    fun findQuestionByIds(ids: List<String>): List<Question?> {
+        return ids.map { id -> questions.firstOrNull { id == it.id } }
+    }
+
+
 }
