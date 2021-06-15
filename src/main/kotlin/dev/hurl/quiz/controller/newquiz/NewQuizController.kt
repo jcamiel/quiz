@@ -1,5 +1,6 @@
 package dev.hurl.quiz.controller.newquiz
 
+import dev.hurl.quiz.controller.quizdetail.QuizDetailUrlMapping
 import dev.hurl.quiz.helper.addCsrfToken
 import dev.hurl.quiz.helper.set
 import dev.hurl.quiz.model.NewestSort
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.servlet.ModelAndView
+import org.springframework.web.servlet.view.RedirectView
 import javax.servlet.http.HttpServletRequest
 
 @Controller
@@ -27,13 +29,10 @@ class NewQuizController(
 
     @PostMapping(path = ["/new-quiz"])
     fun post(request: HttpServletRequest, @ModelAttribute newQuizFormDto: NewQuizFormDto): ModelAndView {
-        val ids = listOf(
-            newQuizFormDto.question0,
-            newQuizFormDto.question1,
-            newQuizFormDto.question2,
-            newQuizFormDto.question3,
-            newQuizFormDto.question4,
-        )
+
+        val ids = with(newQuizFormDto) {
+            listOf(question0, question1, question2, question3, question4)
+        }
         val questions = questionService.findQuestionByIds(ids)
         if (questions.any { it == null}) {
            logger.warn("Invalid ids $ids")
@@ -46,7 +45,9 @@ class NewQuizController(
             questions = questions.filterNotNull()
         )
 
-        return ModelAndView("redirect:/")
+        val quizDetailUrl = QuizDetailUrlMapping.getRelativeUrlMapping(quiz.id)
+        val view = RedirectView(quizDetailUrl)
+        return ModelAndView(view)
     }
 
     private fun getModelAndView(request: HttpServletRequest): ModelAndView {

@@ -16,6 +16,15 @@ question3: 37b9eff3
 question4: 0fec576c
 _csrf: {{csrf_token}}
 HTTP/1.1 302
+[Captures]
+detail_url: header "Location"
+[Asserts]
+header "Location" matches "/quiz/detail/[a-f0-9]{8}"
+
+# Open the newly created quiz detail page:
+GET {{detail_url}}
+HTTP/1.1 200
+
 
 
 # Security check: we try to create a new quiz without a csrf
