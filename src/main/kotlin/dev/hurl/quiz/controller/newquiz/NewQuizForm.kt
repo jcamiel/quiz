@@ -1,7 +1,13 @@
 package dev.hurl.quiz.controller.newquiz
 
-data class NewQuizFormDto (
+import javax.validation.constraints.Email
+import javax.validation.constraints.Size
+
+
+data class NewQuizForm(
+    @field:Size(min = 4, max = 32)
     val name: String,
+    @field:Email
     val email: String?,
     val question0: String,
     val question1: String,

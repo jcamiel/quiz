@@ -8,12 +8,12 @@
 
     <section>
         <div>
-            <label for="name">Author name: <abbr title="required" aria-label="required">*</abbr></label>
-            <input id="name" type="text" name="name" required>
+            <label class="{{dto.name.valid ? '' : 'invalid'}}" for="name">Author name: <abbr title="required" aria-label="required">*</abbr></label>
+            <input id="name" type="text" name="name" minlength="4" maxlength="32" value="{{dto.name.value}}" required>
         </div>
         <div>
-            <label for="email">Email:</label>
-            <input id="email" type="email" name="email">
+            <label class="{{dto.email.valid ? '' : 'invalid'}}" for="email">Email:</label>
+            <input id="email" type="email" name="email" value="{{dto.email.value}}">
         </div>
     </section>
 
@@ -23,11 +23,15 @@
             <ol>
                 {% for i in range(0,4) %}
                 <li>
-                    <label for="question{{i}}"><abbr title="required" aria-label="required">*</abbr></label>
+                    <label class="{{dto.questions[i].valid ? '' : 'invalid'}}" for="question{{i}}"><abbr title="required" aria-label="required">*</abbr></label>
                     <select name="question{{i}}" id="question{{i}}" required>
                         <option value="">--Please choose a question--</option>
-                        {% for question in dto.allQuestions %}
-                        <option value="{{question.id}}">{{question.title}}</option>
+                        {% for choice in dto.questions[i].choices %}
+                            {% if dto.questions[i].value == choice.value %}
+                            <option selected value="{{choice.value}}">{{choice.text}}</option>
+                            {% else %}
+                            <option value="{{choice.value}}">{{choice.text}}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                 </li>

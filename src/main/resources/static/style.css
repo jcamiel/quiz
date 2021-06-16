@@ -54,6 +54,10 @@ input {
     margin: 10px 0 10px 0;
 }
 
+.invalid {
+    color: red;
+}
+
 select {
     margin: 10px 0 10px 0;
 }

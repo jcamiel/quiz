@@ -1,6 +1,10 @@
 package dev.hurl.quiz.controller.newquiz
 
+import dev.hurl.quiz.form.SelectField
+import dev.hurl.quiz.form.TextField
+
 data class NewQuizDto (
-    val allQuestions: List<QuestionDto>,
-    val questions: List<ChoiceDto>
+    val name: TextField,
+    val email: TextField,
+    val questions: List<SelectField>,
 )

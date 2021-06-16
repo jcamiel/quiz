@@ -21,6 +21,7 @@ repositories {
 
 dependencies {
     implementation("io.pebbletemplates:pebble-spring-boot-starter:$pebbleVersion")
+    implementation("org.springframework.boot:spring-boot-starter-validation:$springBootVersion")
     implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
     implementation("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
@@ -28,7 +29,9 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.springframework.session:spring-session-core:$springSessionVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerialization")
+
     developmentOnly("org.springframework.boot:spring-boot-devtools:$springBootVersion")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
 }
 

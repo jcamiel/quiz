@@ -27,6 +27,19 @@ HTTP/1.1 200
 
 
 
+POST http://localhost:8080/new-quiz
+[FormParams]
+# Use of a too short name
+name: xx
+question0: 16f897ab
+question1: dd894cca
+question2: 4edc1fdb
+question3: 37b9eff3
+question4: 0fec576c
+_csrf: {{csrf_token}}
+HTTP/1.1 302
+
+
 # Security check: we try to create a new quiz without a csrf
 # token. Ou app should respond with a 403:
 #POST http://localhost:8080/new-quiz
