@@ -39,13 +39,20 @@ class NewQuizController(
         bindings: BindingResult
     ): ModelAndView {
 
+        if (bindings.hasErrors()) {
+            logger.warn("Error $form not valid")
+            return getModelAndView(request = request, form = form, errors = bindings)
+        }
+
+        // We check that our ids are valid (present in the data base)
+        // TODO: check unique values
         val ids = with(form) {
             listOf(question0, question1, question2, question3, question4)
         }
         val questions = questionService.findQuestionByIds(ids)
         if (questions.any { it == null }) {
             logger.warn("Invalid ids $ids")
-            return getModelAndView(request = request, form = form, errors = bindings)
+            return getModelAndView(request = request, form = form)
         }
 
         val quiz = quizService.createQuiz(
@@ -85,10 +92,12 @@ class NewQuizController(
                 }
             )
         } else {
+            val nameValid = !(errors != null && errors.hasFieldErrors("name"))
+            val emailValid = !(errors != null && errors.hasFieldErrors("email"))
             // TODO: fill valid values from validation errors
             NewQuizDto(
-                name = TextField(value = form.name, valid = true),
-                email = TextField(value = form.email.orEmpty(), valid = true),
+                name = TextField(value = form.name, valid = nameValid),
+                email = TextField(value = form.email.orEmpty(), valid = emailValid),
                 questions = listOf(form.question0, form.question1, form.question2, form.question3, form.question4)
                     .map { SelectField(value = it, valid = true, choices = choices) }
             )
