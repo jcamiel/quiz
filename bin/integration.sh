@@ -19,17 +19,13 @@ wait_for_url () {
 }
 
 echo "Starting Quiz container"
-
 docker run -dp 8080:8080 --name quiz ghcr.io/jcamiel/quiz:latest
 
 echo "Starting Quiz instance to be ready"
-
 wait_for_url 'http://localhost:8080' 60
 
 echo "Running Hurl tests"
-
-hurl integration/*.hurl > /dev/null 2>&1
+hurl integration/*.hurl --test
 
 echo "Stopping Quiz instance"
-
 docker stop quiz
