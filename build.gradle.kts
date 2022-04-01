@@ -11,7 +11,7 @@ plugins {
 
 val springBootVersion = "2.4.5"
 val springSessionVersion = "2.4.3"
-val jacksonVersion = "2.12.3"
+val jacksonVersion = "2.13.2"
 val pebbleVersion = "3.1.5"
 val kotlinSerialization = "1.2.0"
 
