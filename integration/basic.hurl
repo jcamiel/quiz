@@ -1,5 +1,6 @@
 # Checking our home page:
 GET http://localhost:8080
+
 HTTP/1.1 200
 [Asserts]
 xpath "string(//head/title)" == "Welcome to Quiz!"
@@ -14,6 +15,7 @@ cookie "JSESSIONID[HttpOnly]" exists
 
 # Check that we have a 404 response for broken links:
 GET http://localhost:8080/not-found
+
 HTTP/1.1 404
 [Asserts]
 header "Content-Type" == "text/html;charset=UTF-8"
@@ -21,6 +23,7 @@ xpath "string(//h1)" == "Error 404, Page not Found!"
 
 # Check our health api:
 GET http://localhost:8080/api/health
+
 HTTP/1.1 200
 [Asserts]
 header "Content-Type" == "application/json"
@@ -34,6 +37,7 @@ GET http://localhost:8080/api/questions
 offset: 0
 size: 20
 sort: oldest
+
 HTTP/1.1 200
 [Asserts]
 header "Content-Type" == "application/json"
