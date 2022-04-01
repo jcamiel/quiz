@@ -9,7 +9,7 @@ plugins {
     kotlin("plugin.serialization") version "1.6.10"
 }
 
-val springBootVersion = "2.4.5"
+val springBootVersion = "2.6.6"
 val springSessionVersion = "2.4.3"
 val jacksonVersion = "2.13.2"
 val pebbleVersion = "3.1.5"
