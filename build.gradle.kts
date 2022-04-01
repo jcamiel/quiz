@@ -3,15 +3,15 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("org.springframework.boot") version "2.4.5"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
-    id("com.github.ben-manes.versions") version "0.38.0"
-    kotlin("jvm") version "1.5.0"
-    kotlin("plugin.spring") version "1.5.0"
-    kotlin("plugin.serialization") version "1.5.0"
+    id("com.github.ben-manes.versions") version "0.42.0"
+    kotlin("jvm") version "1.6.10"
+    kotlin("plugin.spring") version "1.6.10"
+    kotlin("plugin.serialization") version "1.6.10"
 }
 
-val springBootVersion = "2.4.5"
-val springSessionVersion = "2.4.3"
-val jacksonVersion = "2.12.3"
+val springBootVersion = "2.6.6"
+val springSessionVersion = "2.6.2"
+val jacksonVersion = "2.13.2"
 val pebbleVersion = "3.1.5"
 val kotlinSerialization = "1.2.0"
 
