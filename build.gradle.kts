@@ -48,7 +48,6 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-
 tasks.dependencyUpdates {
     resolutionStrategy {
         componentSelection {
@@ -73,4 +72,8 @@ tasks {
             filter<org.apache.tools.ant.filters.ReplaceTokens>("tokens" to tokens)
         }
     }
+}
+
+tasks.getByName<Jar>("jar") {
+    enabled = false
 }
