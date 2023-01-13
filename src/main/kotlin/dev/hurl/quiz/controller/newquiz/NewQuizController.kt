@@ -8,6 +8,8 @@ import dev.hurl.quiz.helper.set
 import dev.hurl.quiz.model.NewestSort
 import dev.hurl.quiz.service.QuestionService
 import dev.hurl.quiz.service.QuizService
+import jakarta.servlet.http.HttpServletRequest
+import jakarta.validation.Valid
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Controller
 import org.springframework.validation.BindingResult
@@ -17,8 +19,6 @@ import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.servlet.ModelAndView
 import org.springframework.web.servlet.view.RedirectView
-import javax.servlet.http.HttpServletRequest
-import javax.validation.Valid
 
 @Controller
 class NewQuizController(

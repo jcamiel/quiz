@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:jre-11.0.11_9-alpine
+FROM openjdk:17-alpine
 
 RUN addgroup -S quiz && adduser -S quiz -G quiz
 
