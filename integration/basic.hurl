@@ -16,6 +16,7 @@ cookie "JSESSIONID[HttpOnly]" exists
 # Check that we have a 404 response for broken links:
 GET http://localhost:8080/not-found
 
+
 HTTP/1.1 404
 [Asserts]
 header "Content-Type" == "text/html;charset=UTF-8"

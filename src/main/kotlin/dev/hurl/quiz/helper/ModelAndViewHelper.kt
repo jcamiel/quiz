@@ -1,8 +1,8 @@
 package dev.hurl.quiz.helper
 
+import jakarta.servlet.http.HttpServletRequest
 import org.springframework.security.web.csrf.CsrfToken
 import org.springframework.web.servlet.ModelAndView
-import javax.servlet.http.HttpServletRequest
 
 operator fun ModelAndView.set(s: String, value: Any?) {
     addObject(s, value)
