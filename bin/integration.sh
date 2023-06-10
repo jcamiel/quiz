@@ -3,7 +3,7 @@ set -eu
 
 wait_for_url () {
     echo "Testing $1..."
-    echo -e "GET $1\nHTTP/* 200" | hurl --retry --retry-max-count "$2" > /dev/null;
+    echo -e "GET $1\nHTTP 200" | hurl --retry --retry-max-count "$2" > /dev/null;
     return 0
 }
 

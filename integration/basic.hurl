@@ -1,7 +1,6 @@
 # Checking our home page:
 GET http://localhost:8080
-
-HTTP/1.1 200
+HTTP 200
 [Asserts]
 xpath "string(//head/title)" == "Welcome to Quiz!"
 xpath "//button" count == 2
@@ -13,24 +12,24 @@ header "Content-Type" == "text/html;charset=UTF-8"
 cookie "JSESSIONID" exists
 cookie "JSESSIONID[HttpOnly]" exists
 
+
 # Check that we have a 404 response for broken links:
 GET http://localhost:8080/not-found
-
-
-HTTP/1.1 404
+HTTP 404
 [Asserts]
 header "Content-Type" == "text/html;charset=UTF-8"
 xpath "string(//h1)" == "Error 404, Page not Found!"
 
+
 # Check our health api:
 GET http://localhost:8080/api/health
-
-HTTP/1.1 200
+HTTP 200
 [Asserts]
 header "Content-Type" == "application/json"
 jsonpath "$.status" == "RUNNING"
 jsonpath "$.healthy" == true
 jsonpath "$.operationId" exists
+
 
 # Check question api:
 GET http://localhost:8080/api/questions
@@ -38,8 +37,7 @@ GET http://localhost:8080/api/questions
 offset: 0
 size: 20
 sort: oldest
-
-HTTP/1.1 200
+HTTP 200
 [Asserts]
 header "Content-Type" == "application/json"
 jsonpath "$" count == 20
